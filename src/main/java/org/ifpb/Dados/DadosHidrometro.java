@@ -2,16 +2,16 @@ package org.ifpb.Dados;
 
 public class DadosHidrometro {
 
-    private int agua = 0;
-    private int ar = 0;
-    private int ausencia = 0;
-    private int posicaoProcessada = 0;
-    private double vazao = 0;
-    private double pressao = 0;
-    private double base = 0;
-    private double valorPorAgua = 0;
-    private double pesoAr = 0;
-    private double descontoAusencia = 0;
+    private int agua;
+    private int ar;
+    private int ausencia;
+    private int posicaoProcessada;
+    private double vazao;
+    private double pressao ;
+    private double base;
+    private double valorPorAgua;
+    private double pesoAr;
+    private double descontoAusencia;
 
     public int getAr() {
         return ar;

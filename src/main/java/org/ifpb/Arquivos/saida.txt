@@ -1,9 +1,0 @@
------ HIDRÔMETRO -----
-Água detectada (A): 2
-Ar detectado (B): 2
-Ausência (C): 2
-Consumo de Água (ajustado): 9,00 litros
-Interferência do Ar: 0,40 litros
-Perdas por ausência: 0,10 litros
-TOTAL FINAL: 9,30 litros
-VALOR DA CONTA: R$ 1,50
