@@ -41,7 +41,7 @@ public class SimuladorHidrometro {
                     }
 
                     sc.close();
-                    return;
+                    System.exit(0);
                 }
                 default -> System.out.println("Opção inválida!");
             }
