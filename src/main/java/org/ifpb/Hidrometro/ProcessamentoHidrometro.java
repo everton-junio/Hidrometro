@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static java.lang.Thread.sleep;
-import static org.ifpb.Hidrometro.ConfiguracaoHidrometro.carregarConfiguracao;
+import static org.ifpb.Hidrometro.CarregarConfiguracaoHidrometro.carregarConfiguracao;
 import static org.ifpb.Hidrometro.SaidaHidrometro.salvarSaida;
 
 public class ProcessamentoHidrometro implements Runnable {
@@ -15,14 +15,13 @@ public class ProcessamentoHidrometro implements Runnable {
 
     private final DadosHidrometro dadosHidrometro;
     private boolean rodando = true;
-
     public ProcessamentoHidrometro(DadosHidrometro dadosHidrometro) {
         this.dadosHidrometro = dadosHidrometro;
     }
 
-    // 🔹 processamento de um lote de fluxo
     public void processarFluxo() throws InterruptedException {
         String fluxo;
+
         try {
             fluxo = Files.readString(Path.of(INPUT_FILE));
         } catch (IOException e) {
@@ -47,6 +46,7 @@ public class ProcessamentoHidrometro implements Runnable {
             }
             salvarSaida(dadosHidrometro);
             carregarConfiguracao(dadosHidrometro);
+            if (!rodando) {break;}
         }
 
     }

@@ -7,11 +7,11 @@ import java.awt.*;
 
 public class DisplayHidrometro extends JPanel {
 
-    private final DadosHidrometro dados;
+    private final DadosHidrometro dadosHidrometro;
 
-    public DisplayHidrometro(DadosHidrometro dados) {
-        this.dados = dados;
-        new Timer(dados.getTaxaAtualizacaoPainelEmSegundos(), e -> repaint()).start();
+    public DisplayHidrometro(DadosHidrometro dadosHidrometro) {
+        this.dadosHidrometro = dadosHidrometro;
+        new Timer(dadosHidrometro.getTaxaAtualizacaoPainelEmSegundos(), e -> repaint()).start();
     }
 
     @Override
@@ -34,19 +34,19 @@ public class DisplayHidrometro extends JPanel {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Monospaced", Font.BOLD, 24));
 
-        String leitura = String.format("%05d", (int) dados.getAgua());
+        String leitura = String.format("%05d", (int) dadosHidrometro.getAgua());
         g.drawString(leitura, 150, 130);
 
         // Ar e ausência menores
         g.setFont(new Font("Monospaced", Font.PLAIN, 16));
-        g.drawString("Ar (B): " + dados.getAr(), 150, 160);
-        g.drawString("Ausência (C): " + dados.getAusencia(), 150, 180);
-        g.drawString("Vazao (C): " + dados.getVazao(), 150, 200);
+        g.drawString("Ar (B): " + dadosHidrometro.getAr(), 150, 160);
+        g.drawString("Ausência (C): " + dadosHidrometro.getAusencia(), 150, 180);
+        g.drawString("Vazao (C): " + dadosHidrometro.getVazao(), 150, 200);
     }
 
-    public static void mostrar(DadosHidrometro dados) {
+    public static void mostrarDisplay(DadosHidrometro dadosHidrometro) {
         JFrame frame = new JFrame("Hidrômetro");
-        DisplayHidrometro painel = new DisplayHidrometro(dados);
+        DisplayHidrometro painel = new DisplayHidrometro(dadosHidrometro);
 
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(painel);
