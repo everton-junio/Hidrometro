@@ -4,3 +4,5 @@ base=1
 valorPorAgua=0.75
 pesoAr = 0.1
 descontoAusencia = 0.05
+taxaAtualizacaoPainelEmSegundos = 0.5
+velocidadeDeLeituraFluxoDeAguaEmSegundos = 0.5

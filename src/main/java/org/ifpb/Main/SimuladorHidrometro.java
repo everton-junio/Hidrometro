@@ -1,12 +1,13 @@
 package org.ifpb.Main;
+
 import org.ifpb.Dados.DadosHidrometro;
+import org.ifpb.Hidrometro.DisplayHidrometro;
+import org.ifpb.Hidrometro.ProcessamentoHidrometro;
 
-import java.util.*;
+import java.util.Scanner;
 
+import static java.lang.System.exit;
 import static org.ifpb.Hidrometro.ConfiguracaoHidrometro.carregarConfiguracao;
-import static org.ifpb.Hidrometro.DisplayHidrometro.mostrarHidrometro;
-import static org.ifpb.Hidrometro.ProcessamentoHidrometro.processarFluxo;
-
 
 public class SimuladorHidrometro {
 
@@ -14,26 +15,24 @@ public class SimuladorHidrometro {
         DadosHidrometro dadosHidrometro = new DadosHidrometro();
         carregarConfiguracao(dadosHidrometro);
 
+        ProcessamentoHidrometro proc = new ProcessamentoHidrometro(dadosHidrometro);
+        Thread threadProc = new Thread(proc);
+        threadProc.start();
+
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.println("\n--- MENU HIDRÔMETRO ---");
-            System.out.println("1. Ver números do hidrômetro");
-            System.out.println("2. Processar próximo lote do fluxo");
-            System.out.println("3. Recarregar configuração");
-            System.out.println("4. Sair");
+            System.out.println("1. Sair");
             System.out.print("Escolha: ");
 
+            DisplayHidrometro.mostrar(dadosHidrometro);
             int opcao = sc.nextInt();
 
             switch (opcao) {
-                case 1 -> mostrarHidrometro(dadosHidrometro);
-                case 2 -> processarFluxo(dadosHidrometro);
-                case 3 -> carregarConfiguracao(dadosHidrometro);
-                case 4 -> {
+                case 1 -> {
                     System.out.println("Encerrando...");
-                    sc.close();
-                    return;
+                    exit(0);
                 }
                 default -> System.out.println("Opção inválida!");
             }

@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class ConfiguracaoHidrometro {
     private static final String CONFIG_FILE = "C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\config.txt";
-
+    private static final double SEGUNDOS_PARA_MILISEGUNDOS = 1000;
     public static void carregarConfiguracao(DadosHidrometro dadosHidrometro) {
         Properties props = new Properties();
         try (FileReader fr = new FileReader(CONFIG_FILE)) {
@@ -19,10 +19,8 @@ public class ConfiguracaoHidrometro {
             dadosHidrometro.setValorPorAgua(Double.parseDouble(props.getProperty("valorPorAgua", "0")));
             dadosHidrometro.setPesoAr(Double.parseDouble(props.getProperty("pesoAr", "0")));
             dadosHidrometro.setDescontoAusencia(Double.parseDouble(props.getProperty("descontoAusencia", "0")));
-            System.out.println("Configuração carregada: vazao=" + dadosHidrometro.getVazao() +
-                    ", pressao=" + dadosHidrometro.getPressao() +
-                    ", base=" + dadosHidrometro.getBase() +
-                    ", valorPorAgua=" + dadosHidrometro.getValorPorAgua());
+            dadosHidrometro.setTaxaAtualizacaoPainelEmSegundos(Double.parseDouble(props.getProperty("taxaAtualizacaoPainelEmSegundos", "0"))*SEGUNDOS_PARA_MILISEGUNDOS);
+            dadosHidrometro.setVelocidadeDeLeituraFluxoDeAguaEmSegundos(Double.parseDouble(props.getProperty("velocidadeDeLeituraFluxoDeAguaEmSegundos", "0"))*SEGUNDOS_PARA_MILISEGUNDOS);
         } catch (IOException e) {
             System.out.println("Erro ao carregar configuração. Usando valores padrão.");
         }

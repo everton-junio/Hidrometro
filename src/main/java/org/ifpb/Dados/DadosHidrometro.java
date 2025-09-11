@@ -12,9 +12,27 @@ public class DadosHidrometro {
     private double valorPorAgua;
     private double pesoAr;
     private double descontoAusencia;
+    private int taxaAtualizacaoPainelEmSegundos;
+    private int velocidadeDeLeituraFluxoDeAguaEmSegundos;
 
     public int getAr() {
         return ar;
+    }
+
+    public int getTaxaAtualizacaoPainelEmSegundos() {
+        return taxaAtualizacaoPainelEmSegundos;
+    }
+
+    public void setTaxaAtualizacaoPainelEmSegundos(double taxaAtualizacaoPainelEmSegundos) {
+        this.taxaAtualizacaoPainelEmSegundos = (int) taxaAtualizacaoPainelEmSegundos;
+    }
+
+    public int getVelocidadeDeLeituraFluxoDeAguaEmSegundos() {
+        return velocidadeDeLeituraFluxoDeAguaEmSegundos;
+    }
+
+    public void setVelocidadeDeLeituraFluxoDeAguaEmSegundos(double velocidadeDeLeituraFluxoDeAguaEmSegundos) {
+        this.velocidadeDeLeituraFluxoDeAguaEmSegundos = (int) velocidadeDeLeituraFluxoDeAguaEmSegundos;
     }
 
     public double getPesoAr() {
