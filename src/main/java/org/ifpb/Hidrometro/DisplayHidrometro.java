@@ -2,46 +2,50 @@ package org.ifpb.Hidrometro;
 
 import org.ifpb.Dados.DadosHidrometro;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class DisplayHidrometro extends JPanel {
 
     private final DadosHidrometro dadosHidrometro;
+    private Image backgroundImage;
 
     public DisplayHidrometro(DadosHidrometro dadosHidrometro) {
         this.dadosHidrometro = dadosHidrometro;
         new Timer(dadosHidrometro.getTaxaAtualizacaoPainelEmSegundos(), e -> repaint()).start();
+        try {
+            backgroundImage = ImageIO.read(new File("C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\ImagemHidrometro.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        // Fundo
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, getWidth(), getHeight());
-
-        // Corpo do hidrômetro
-        g.setColor(Color.GRAY);
-        g.fillRect(50, 50, 300, 150);
-
-        // Vidro do hidrômetro
-        g.setColor(Color.CYAN);
-        g.fillRect(60, 60, 280, 130);
+        if (backgroundImage != null) {
+            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            // Caso a imagem não carregue, usa fundo branco
+            g.setColor(Color.WHITE);
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
 
         // Números do hidrômetro
         g.setColor(Color.BLACK);
         g.setFont(new Font("Monospaced", Font.BOLD, 24));
 
-        String leitura = String.format("%05d", (int) dadosHidrometro.getAgua());
-        g.drawString(leitura, 150, 130);
+        String leitura = String.format("%05d", dadosHidrometro.getAgua());
+        g.drawString(leitura, 160, 120);
 
         // Ar e ausência menores
-        g.setFont(new Font("Monospaced", Font.PLAIN, 16));
-        g.drawString("Ar (B): " + dadosHidrometro.getAr(), 150, 160);
-        g.drawString("Ausência (C): " + dadosHidrometro.getAusencia(), 150, 180);
-        g.drawString("Vazao (C): " + dadosHidrometro.getVazao(), 150, 200);
+        g.setFont(new Font("Monospaced", Font.BOLD, 10));
+        g.drawString(String.valueOf(dadosHidrometro.getPressao()), 142, 139);
+        g.drawString(String.valueOf(dadosHidrometro.getVazao()), 142, 151);
     }
 
     public static void mostrarDisplay(DadosHidrometro dadosHidrometro) {
