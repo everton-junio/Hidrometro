@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class CarregarConfiguracaoHidrometro {
-    private static final String CONFIG_FILE = "C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\config.txt";
+    private static final String CONFIG_FILE = "src/main/java/org/ifpb/Arquivos/config.txt";
     private static final double SEGUNDOS_PARA_MILISEGUNDOS = 1000;
 
     public static void carregarConfiguracao(DadosHidrometro dadosHidrometro) {

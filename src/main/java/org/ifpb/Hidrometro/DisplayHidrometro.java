@@ -17,7 +17,7 @@ public class DisplayHidrometro extends JPanel {
         this.dadosHidrometro = dadosHidrometro;
         new Timer(dadosHidrometro.getTaxaAtualizacaoPainelEmSegundos(), e -> repaint()).start();
         try {
-            backgroundImage = ImageIO.read(new File("C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\ImagemHidrometro.png"));
+            backgroundImage = ImageIO.read(new File("src/main/java/org/ifpb/Arquivos/ImagemHidrometro.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,19 +30,16 @@ public class DisplayHidrometro extends JPanel {
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         } else {
-            // Caso a imagem não carregue, usa fundo branco
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
-        // Números do hidrômetro
         g.setColor(Color.BLACK);
         g.setFont(new Font("Monospaced", Font.BOLD, 24));
 
         String leitura = String.format("%05d", dadosHidrometro.getAgua());
         g.drawString(leitura, 160, 120);
 
-        // Ar e ausência menores
         g.setFont(new Font("Monospaced", Font.BOLD, 10));
         g.drawString(String.valueOf(dadosHidrometro.getPressao()), 142, 139);
         g.drawString(String.valueOf(dadosHidrometro.getVazao()), 142, 151);

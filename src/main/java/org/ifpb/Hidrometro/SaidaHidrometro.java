@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SaidaHidrometro {
-    private static final String OUTPUT_FILE = "C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\saida.txt";
+    private static final String OUTPUT_FILE = "src/main/java/org/ifpb/Arquivos/saida.txt";
 
     public static void salvarSaida(DadosHidrometro dadosHidrometro) {
         double consumoAgua = dadosHidrometro.getBase() + (dadosHidrometro.getAgua() * dadosHidrometro.getVazao() * dadosHidrometro.getPressao());

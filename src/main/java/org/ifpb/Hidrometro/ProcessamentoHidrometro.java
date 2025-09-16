@@ -11,7 +11,7 @@ import static org.ifpb.Hidrometro.CarregarConfiguracaoHidrometro.carregarConfigu
 import static org.ifpb.Hidrometro.SaidaHidrometro.salvarSaida;
 
 public class ProcessamentoHidrometro implements Runnable {
-    private static final String INPUT_FILE = "C:\\Users\\evert\\Documentos\\Facul\\PDP\\Hidrometro\\src\\main\\java\\org\\ifpb\\Arquivos\\entrada.txt";
+    private static final String INPUT_FILE = "src/main/java/org/ifpb/Arquivos/entrada.txt";
 
     private final DadosHidrometro dadosHidrometro;
     private boolean rodando = true;
