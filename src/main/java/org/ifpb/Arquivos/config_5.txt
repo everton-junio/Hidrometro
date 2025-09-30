@@ -1,0 +1,7 @@
+vazao=1.1
+pressao=1.4
+base=12.0
+valorPorAgua=0.55
+pesoAr=0.3
+descontoAusencia=0.8
+velocidadeDeLeituraFluxoDeAguaEmSegundos=0.8

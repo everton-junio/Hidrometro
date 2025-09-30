@@ -1,18 +1,18 @@
 package org.ifpb.Hidrometro;
 
 import org.ifpb.Dados.DadosHidrometro;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
 public class CarregarConfiguracaoHidrometro {
-    private static final String CONFIG_FILE = "src/main/java/org/ifpb/Arquivos/config.txt";
     private static final double SEGUNDOS_PARA_MILISEGUNDOS = 1000;
 
-    public static void carregarConfiguracao(DadosHidrometro dadosHidrometro) {
+    // MUDANÇA: O método agora recebe o caminho do arquivo de configuração como parâmetro.
+    public static void carregarConfiguracao(DadosHidrometro dadosHidrometro, String configFile) {
         Properties props = new Properties();
-        try (FileReader fr = new FileReader(CONFIG_FILE)) {
+        // MUDANÇA: Usa o parâmetro 'configFile' em vez da constante fixa.
+        try (FileReader fr = new FileReader(configFile)) {
             props.load(fr);
             dadosHidrometro.setVazao(Double.parseDouble(props.getProperty("vazao", "0")));
             dadosHidrometro.setPressao(Double.parseDouble(props.getProperty("pressao", "0")));
@@ -23,7 +23,8 @@ public class CarregarConfiguracaoHidrometro {
             dadosHidrometro.setTaxaAtualizacaoPainelEmSegundos(Double.parseDouble(props.getProperty("taxaAtualizacaoPainelEmSegundos", "0")) * SEGUNDOS_PARA_MILISEGUNDOS);
             dadosHidrometro.setVelocidadeDeLeituraFluxoDeAguaEmSegundos(Double.parseDouble(props.getProperty("velocidadeDeLeituraFluxoDeAguaEmSegundos", "0")) * SEGUNDOS_PARA_MILISEGUNDOS);
         } catch (IOException e) {
-            System.out.println("Erro ao carregar configuração. Usando valores padrão.");
+            System.out.println("Erro ao carregar " + configFile + ". Usando valores padrão.");
         }
     }
 }
+// modificado por Ilana.costa
