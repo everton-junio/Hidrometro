@@ -1,0 +1,7 @@
+vazao=1.2
+pressao=1.5
+base=10.0
+valorPorAgua=0.5
+pesoAr=0.3
+descontoAusencia=0.1
+velocidadeDeLeituraFluxoDeAguaEmSegundos=1.0config_1.txt

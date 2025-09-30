@@ -1,0 +1,9 @@
+----- Relatório Hidrômetro: src/main/java/org/ifpb/Arquivos/saida_5.txt -----
+Água detectada (A): 6
+Ar detectado (B): 0
+Ausência (C): 9
+Consumo de Água (ajustado): 21,24 litros
+Interferência do Ar: 0,00 litros
+Perdas por ausência: 7,20 litros
+TOTAL FINAL: 14,04 litros
+VALOR DA CONTA: R$ 3,30
